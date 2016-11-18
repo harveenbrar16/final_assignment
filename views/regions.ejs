@@ -1,3 +1,16 @@
 <%include partial/header.ejs %>
 <h1><%title%></h1>
+<a href="/regions/add">Add a Region</a>
+<table class=""table table-striped">
+<tr>
+    <th>Region</th>
+    <th>Province</th>
+
+</tr>
+<%for (var i=0;i<regions.length;i++) { %>
+<tr>
+    <td><%=regions[i].regions%></td>
+    <td><%=drinks[i].province %></td>
+</tr>
+
 <%include partial/footer.ejs %>
