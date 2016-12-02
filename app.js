@@ -11,6 +11,38 @@ var regions=require('./routes/regions');
 
 var app = express();
 
+//here we are  connecting  mongodb use mongoose
+var mongoose =require('mongoose');
+var config =require('./config/globalVars');
+mongoose.connect(config.db);
+
+var passport = require('passport');
+var session = require('express-session');
+var flash = require('connect-flash');
+
+
+
+var localStrategy = require('passport-local').Strategy;
+
+app.use(flash());
+
+app.use(session({
+  secret: config.secret,
+  resave: true,
+  saveUninitialized: false
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+
+var Account = require('./models/account');
+passport.use(Account.createStrategy());
+
+
+passport.serializeUser(Account.serializeUser());
+passport.deserializeUser(Account.deserializeUser());
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -25,6 +57,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/users', users);
+app.use('/regions',regions);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -1,0 +1,49 @@
+<%include partial/header.ejs %>
+<br>
+<br>
+<div class="container">
+<h1>ODSP Details</h1>
+
+<form method="post" class="form-group">
+    <div class="form-group">
+        <label for="Name" class="col-sm-2 control-label">Name:</label>
+        <input name="Name" id="Name"value="<%= user.Name%>">
+    </div>
+    <div class="form-group">
+        <label for="PostalCode" class="col-sm-2 control-label">PostalCode</label>
+        <input name="PostalCode" id="PostalCode" value="<%= PostalCode%>">
+    </div>
+    <div class="form-group">
+        <label for="PhoneNumber" class="col-sm-2 control-label">PhoneNumber</label>
+        <input name="PhoneNumber" id="PhoneNumber"value="<%= PhoneNumber %>">
+    </div>
+    <div class="form-group">
+        <label for="Government_Private" class="col-sm-2 control-label">Government_Private</label>
+        <input name="Government_Private" id="Government_Private"value="<%= Government_Private %>">
+    </div>
+    <div class="form-group">
+        <label for="region" class="col-sm-2 control-label">Regions:</label>
+        <select name="region" id="region" value="<%= region%>">
+            <option>Hamilton</option>
+            <option>Calgary</option>
+            <option>Barrie</option>
+            <option>Thunder Bay</option>
+            <option>Brampton</option>
+            <option>Kingston</option>
+            <option>Lindsay</option>
+            <option>Winnipeg</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="province" class="col-sm-2 control-label">Province:</label>
+        <select name="province" id="province" value="<%= province%>">
+            <option>Ontario</option>
+            <option>British Columbia</option>
+            <option>Manitoba</option>
+            <option>Alberta</option>
+        </select>
+    </div>
+    <button class="btn btn-success col-sm-offset-2">Save</button>
+</form>
+</div>
+<% include partial/footer.ejs %>
